@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "7a54a51e-f8aa-4795-b474-e8689b6236a0",
+		"name": "Real Project by basic method",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27098150",
+		"_collection_link": "https://blue-spaceship-335988.postman.co/workspace/a3525302-e878-42e5-a8d0-b5757071873b/collection/27098150-7a54a51e-f8aa-4795-b474-e8689b6236a0?action=share&creator=27098150&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Server status check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a single projects",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"device_id\": \"12\",\n  \"purchase_id\": \"11\",\n  \"dreams\": [\n    {\n      \"id\": \"T001_V001\",\n      \"class_name\": \"\",\n      \"prefix_of_instance_prompt\": \"\",\n      \"suffix_of_instance_prompt\": \" in meadow picking flowers poster\",\n      \"class_prompt\": \"Goku Dalai Lama in meadow picking flowers poster\",\n      \"negative_prompt\": \"bad anatomy, bad composition, ugly, abnormal, unrealistic, double, contorted, disfigured, malformed, amateur, extra, duplicate\",\n      \"seed\": 615110,\n      \"guidance_scale\": 7,\n      \"height\": 768,\n      \"width\": 512,\n      \"steps\": 50,\n      \"number_of_output_img\": 20\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}projects",
+					"host": [
+						"{{URL}}projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Single image by project ID",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/marufa/Documents/mee/marufa pic 30 kb.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}upload-image/{{projectID}}",
+					"host": [
+						"{{URL}}upload-image"
+					],
+					"path": [
+						"{{projectID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload dreams by project Id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"dreams\": [\n    {\n      \"id\": \"T001_V001\",\n      \"class_name\": \"\",\n      \"prefix_of_instance_prompt\": \"\",\n      \"suffix_of_instance_prompt\": \" in meadow picking flowers poster\",\n      \"class_prompt\": \"Goku Dalai Lama in meadow picking flowers poster\",\n      \"negative_prompt\": \"bad anatomy, bad composition, ugly, abnormal, unrealistic, double, contorted, disfigured, malformed, amateur, extra, duplicate\",\n      \"seed\": 615110,\n      \"guidance_scale\": 7,\n      \"height\": 768,\n      \"width\": 512,\n      \"steps\": 50,\n      \"number_of_output_img\": 20\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{URL}}upload-dreams/{{projectID}}",
+					"host": [
+						"{{URL}}upload-dreams"
+					],
+					"path": [
+						"{{projectID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Process dream by project-id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}process-dream/{{projectID}}",
+					"host": [
+						"{{URL}}process-dream"
+					],
+					"path": [
+						"{{projectID}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Project result",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}project-result/{{result- id}}",
+					"host": [
+						"{{URL}}project-result"
+					],
+					"path": [
+						"{{result- id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete project by project id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}delete-project/projectid (ec4ccac2-6a6e-493e-ad28-9c51eb02d693)",
+					"host": [
+						"{{URL}}delete-project"
+					],
+					"path": [
+						"projectid (ec4ccac2-6a6e-493e-ad28-9c51eb02d693)"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://35.208.205.152:8000/"
+		},
+		{
+			"key": "result- id",
+			"value": "62f18526-f43a-4139-9836-8e6ad7c45edd"
+		}
+	]
+}
